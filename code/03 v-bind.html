@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../lib/vue-2.5.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--  v-bind:用于绑定属性的指令 ， 把cTitle当做变量-->
+        <input type="button" value="点点点" v-bind:title="cTitle + '---哈哈哈哈'">
+
+        <!-- 简写 -->
+        <input type="button" value="点点点" :title="cTitle + '---哈哈哈哈'">
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+               cTitle: '我是自定义的标题'
+            }
+        })
+    </script>
+</body>
+
+</html>

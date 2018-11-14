@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../lib/vue-2.5.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="出发" @click="gogogo">
+        <input type="button" value="停停停" @click="stopstopstop">
+        <p v-text="msg"></p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '时间就是金钱，我的朋友！',
+                intervarId: null, // 定时器ID
+            },
+            methods: { // 定义方法
+                gogogo() {
+                    if (this.intervarId != null) return
+                    this.intervarId = setInterval(() => {
+                        var start = this.msg.substring(0, 1)
+                        var end = this.msg.substring(1)
+                        this.msg = end + start
+                        // VM 会监听自己身上的data中所有数据的改变，
+                        // 只要数据一发生改变，那么就回同步view层
+                    }, 400)
+                },
+                stopstopstop() {
+                    clearInterval(this.intervarId)
+                    this.intervarId = null
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
